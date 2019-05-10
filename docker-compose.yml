@@ -1,0 +1,12 @@
+version: '3'
+services:
+  node-environment:
+    image: node:${NODE_VERSION}-alpine
+    volumes:
+      - ./:/var/www/html
+    ports: 
+      - ${SERVER_PORT}:80
+    working_dir: /var/www/html
+    command: npm run start:${NODE_ENV}
+    environment:
+      - NODE_ENV=${NODE_ENV}
